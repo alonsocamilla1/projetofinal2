@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.gama.itau.projetofinal2.model.Conta;
 import br.gama.itau.projetofinal2.model.Movimentacao;
-import br.gama.itau.projetofinal2.repositorio.MovimentacaoRepo;
 import br.gama.itau.projetofinal2.service.ContaService;
 import br.gama.itau.projetofinal2.service.MovimentacaoService;
 
@@ -27,9 +26,6 @@ public class MovimentacaoController {
 
     @Autowired
     private ContaService contaService;
-
-    @Autowired
-    private MovimentacaoRepo movimentacaoRepo;
 
     
     @PostMapping
@@ -49,7 +45,7 @@ public class MovimentacaoController {
         contaService.alterarDados(conta, saldo);
 
         // depois grava a movimentação
-        Movimentacao movimentacaoInserido = movimentacaoRepo.save(movimentacao);
+        Movimentacao movimentacaoInserido = movimentacaoService.cadastrarMovimentacao(movimentacao);
         
         return movimentacaoInserido;
 

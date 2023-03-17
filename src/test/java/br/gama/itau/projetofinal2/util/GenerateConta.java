@@ -56,4 +56,22 @@ public static Conta contaValida() {
             .cliente(GenerateCliente.clienteValido())
             .build();
     }
+
+    public static Conta novaContaToSaveComCliente() {
+        return Conta.builder()
+            .agencia(1111)
+            .tipoConta(1)
+            .saldo(10.0)
+            .cliente(GenerateCliente.clienteValido())
+            .build();
+    }
+
+    public static Conta novaContaToSaveComCliente2() {
+        return Conta.builder()
+            .agencia(2222)
+            .tipoConta(2)
+            .saldo(20.0)
+            .cliente(GenerateCliente.clienteValido())
+            .build();
+    }
 }

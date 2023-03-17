@@ -11,6 +11,17 @@ public class GenerateMovimentacao {
             .dataOperacao(LocalDate.now())
             .valor(1.0)
             .tipoOperacao(1)
+            .descricao("aaa")
+            .conta(GenerateConta.contaValida())
+            .build();
+    }
+    public static Movimentacao novaMovimentacaoTo() {
+        return Movimentacao.builder()
+            .dataOperacao(LocalDate.now())
+            .valor(1.0)
+            .tipoOperacao(1)
+            .conta(GenerateConta.contaValida())
+            .descricao("aa")
             .build();
     }
 
@@ -20,14 +31,18 @@ public class GenerateMovimentacao {
             .dataOperacao(LocalDate.now())
             .valor(1.0)
             .tipoOperacao(1)
+            .conta(GenerateConta.contaValida())
+            .descricao("aaa")
             .build();
     }
 
-    public static Movimentacao novaMoviToSave2() {
+    public static Movimentacao novaMoviToSave2 () {
         return Movimentacao.builder()
             .dataOperacao(LocalDate.now())
             .valor(2.0)
             .tipoOperacao(2)
+            .conta(GenerateConta.contaValida())
+            .descricao("aaa")
             .build();
     }
 
@@ -37,6 +52,8 @@ public class GenerateMovimentacao {
             .dataOperacao(LocalDate.now())
             .valor(2.0)
             .tipoOperacao(2)
+            .conta(GenerateConta.contaValida())
+            .descricao("aaa")
             .build();
     }
 }
