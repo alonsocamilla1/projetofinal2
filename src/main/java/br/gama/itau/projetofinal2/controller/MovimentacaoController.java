@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.gama.itau.projetofinal2.model.Conta;
 import br.gama.itau.projetofinal2.model.Movimentacao;
 import br.gama.itau.projetofinal2.repositorio.MovimentacaoRepo;
 import br.gama.itau.projetofinal2.service.ContaService;
