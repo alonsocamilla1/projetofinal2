@@ -43,7 +43,7 @@ public class ContaService {
         if (contaOptional.isPresent()) {
             return contaOptional.get();
         } else {
-            throw new NotFoundException("Cliente não encontrado");
+            throw new NotFoundException("Conta não encontrado");
         }
     }
 

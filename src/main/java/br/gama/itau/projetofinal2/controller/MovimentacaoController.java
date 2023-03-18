@@ -50,9 +50,9 @@ public class MovimentacaoController {
         return movimentacaoInserido;
 
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<List<Movimentacao>> recuperarTodas(@PathVariable int id) {
-        List<Movimentacao> movimentacao = movimentacaoService.recuperarTodas(id);
+    @GetMapping("/{numeroConta}")
+    public ResponseEntity<List<Movimentacao>> recuperarTodas(@PathVariable int numeroConta) {
+        List<Movimentacao> movimentacao = movimentacaoService.recuperarTodas(numeroConta);
         return new ResponseEntity<>(movimentacao, HttpStatus.OK);
  }
 }

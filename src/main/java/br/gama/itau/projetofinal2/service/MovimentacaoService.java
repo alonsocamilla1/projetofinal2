@@ -31,9 +31,9 @@ public class MovimentacaoService {
     // todas as movimentações de uma determinada conta
     // ===== Fazer com que retorne uma lista de movimentações através do número da
     // conta (numeroConta) =====
-    public List<Movimentacao> recuperarTodas(int id){
+    public List<Movimentacao> recuperarTodas(int numeroConta){
         Conta conta = new Conta();
-        conta.setNumeroConta(id);
+        conta.setNumeroConta(numeroConta);
         List<Movimentacao> listaMov = movimentacaoRepo.findByConta(conta);
 
         if (listaMov.isEmpty()) {
