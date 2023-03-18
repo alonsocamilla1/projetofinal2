@@ -10,14 +10,11 @@ import java.util.List;
 
 import org.hamcrest.CoreMatchers;
 import org.springframework.http.MediaType;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.web.servlet.MockMvc;
@@ -25,12 +22,10 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.gama.itau.projetofinal2.model.Conta;
 import br.gama.itau.projetofinal2.model.Movimentacao;
 import br.gama.itau.projetofinal2.repositorio.ClienteRepo;
 import br.gama.itau.projetofinal2.repositorio.ContaRepo;
 import br.gama.itau.projetofinal2.repositorio.MovimentacaoRepo;
-import br.gama.itau.projetofinal2.service.MovimentacaoService;
 import br.gama.itau.projetofinal2.util.GenerateCliente;
 import br.gama.itau.projetofinal2.util.GenerateConta;
 import br.gama.itau.projetofinal2.util.GenerateMovimentacao;
