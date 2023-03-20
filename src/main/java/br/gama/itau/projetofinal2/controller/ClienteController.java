@@ -36,6 +36,7 @@ public class ClienteController {
         return new ResponseEntity<List<Cliente>>(clientes, HttpStatus.OK);
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> recuperarPeloID(@PathVariable Integer id) {
         Cliente cliente = service.recuperarPeloID(id);

@@ -23,13 +23,11 @@ public class ClienteService {
         Cliente clienteInserido = repo.save(novoCliente);
         return clienteInserido; 
     }
-    
-    
     public List<Cliente> recuperarTodos() {
         return (List<Cliente>) repo.findAll();
     }
     
-    public Cliente reacuperrPeloID(int id) {
+    public Cliente recuperarPeloID(int id) {
         Optional<Cliente> clienteOptional = repo.findById(id);
 
         if (clienteOptional.isEmpty()) {
