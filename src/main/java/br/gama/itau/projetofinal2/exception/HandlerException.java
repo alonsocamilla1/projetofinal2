@@ -26,10 +26,7 @@ public class HandlerException {
                 .mensagem(ex.getMessage())
                 .codigoStatus(HttpStatus.NOT_FOUND.value())
                 .build();
-        // exceptionDetails.setTitulo("Erro na solicitação");
-        // exceptionDetails.setMensagem(ex.getMessage());
-        // exceptionDetails.setCodigoStatus(HttpStatus.NOT_FOUND.value());
-        // exceptionDetails.setTimestamp(LocalDate.now());
+        
         return new ResponseEntity<>(exceptionDetails, HttpStatus.NOT_FOUND);
     }
 }
