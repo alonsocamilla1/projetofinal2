@@ -1,5 +1,6 @@
 package br.gama.itau.projetofinal2.util;
 
+import br.gama.itau.projetofinal2.model.Cliente;
 import br.gama.itau.projetofinal2.model.Conta;
 
 public class GenerateConta {
@@ -44,6 +45,22 @@ public static Conta contaValida() {
             .tipoConta(1)
             .saldo(30.0)
             .cliente(GenerateCliente.clienteValido())
+            .build();
+    }
+    public static Conta novaContaComCliente(int idCliente) {
+        return Conta.builder()
+            .agencia(3333)
+            .tipoConta(1)
+            .saldo(30.0)
+            .cliente(Cliente.builder().idCliente(idCliente).build())
+            .build();
+    }
+    public static Conta novaContaCliente2(int idCliente) {
+        return Conta.builder()
+            .agencia(2222)
+            .tipoConta(1)
+            .saldo(30.0)
+            .cliente(Cliente.builder().idCliente(idCliente).build())
             .build();
     }
 

@@ -85,13 +85,11 @@ public class MovimentacaoITTest {
         lista.add(GenerateMovimentacao.novaMoviToSave2());
 
         repo.saveAll(lista);
-
-        // ação
+        
         ResultActions resposta = mockMvc
                 .perform(get("/movimentacoes/{numeroConta}", novaMoviToSave.getConta().getNumeroConta())
                         .contentType(MediaType.APPLICATION_JSON));
-
-        // verificações
+                        
         resposta.andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()", CoreMatchers.is(lista.size())))
                 .andExpect(

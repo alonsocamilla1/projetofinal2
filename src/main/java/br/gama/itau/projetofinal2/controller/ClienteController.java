@@ -21,8 +21,6 @@ public class ClienteController {
     @Autowired
     private ClienteService service;
 
-    //-	/clientes (POST) - chama o serviço cadastrarCliente 
-    //e pode retornar status 201 ou 400.
     @PostMapping
     public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente novoCliente) {
         Cliente clienteCadastrado = service.cadastrarCliente(novoCliente);
@@ -32,16 +30,12 @@ public class ClienteController {
         return new ResponseEntity<Cliente>(clienteCadastrado, HttpStatus.CREATED);
     } 
     
-    //-	/clientes (GET) - chama o serviço recuperarTodos
     @GetMapping
     public ResponseEntity<List<Cliente>> recuperarTodos() {
         List<Cliente> clientes = service.recuperarTodos();
         return new ResponseEntity<List<Cliente>>(clientes, HttpStatus.OK);
     }
 
-
-    //-	/clientes/{id} (GET) - chama o serviço recuperarPeloId e 
-    //pode retornar status 200 ou 404 se o cliente não existir
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> recuperarPeloID(@PathVariable Integer id) {
         Cliente cliente = service.recuperarPeloID(id);

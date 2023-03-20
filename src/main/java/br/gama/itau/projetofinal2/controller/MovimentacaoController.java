@@ -30,9 +30,7 @@ public class MovimentacaoController {
     
     @PostMapping
     public Movimentacao cadastrarMovimentacao(@RequestBody Movimentacao movimentacao) {
-       // return movimentacaoRepo.save(movimentacao);
-
-        // ajustar o saldo
+      
         Conta conta = contaService.recuperarPeloNumero(movimentacao.getConta().getNumeroConta());
         double saldo = conta.getSaldo();
 
@@ -44,7 +42,6 @@ public class MovimentacaoController {
 
         contaService.alterarDados(conta, saldo);
 
-        // depois grava a movimentação
         Movimentacao movimentacaoInserido = movimentacaoService.cadastrarMovimentacao(movimentacao);
         
         return movimentacaoInserido;

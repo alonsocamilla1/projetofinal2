@@ -39,8 +39,10 @@ public class ClienteServiceTest {
 
         assertThat(clienteCriado).isNotNull();
         assertThat(clienteCriado.getIdCliente()).isPositive();
-        assertThat(clienteCriado.getTelefoneCliente()).isEqualTo(GenerateCliente.clienteValido().getTelefoneCliente());
-        // verifica se o método save foi chamado 1 vez
+        assertThat(clienteCriado.getTelefoneCliente()).isEqualTo(GenerateCliente
+                                .clienteValido()
+                                .getTelefoneCliente());
+
         verify(repo, Mockito.times(1)).save(novoCliente);
     }
 
@@ -74,8 +76,7 @@ public class ClienteServiceTest {
     @Test
     public void recuperarPeloId_throwException_whenIdNotExist() {
         Cliente clienteValido = GenerateCliente.novoClienteToSave();
-    // verifica se uma exception do tipo NotFoundException é lançada
-    // () -> { } é uma chamada de método anônimo
+        
         assertThrows(NotFoundException.class, () -> {
         service.recuperarPeloID(clienteValido.getIdCliente());
         });

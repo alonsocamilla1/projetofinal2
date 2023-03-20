@@ -13,19 +13,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ContaService {
-
     
-    // Injeção de dependências
     @Autowired
     private ContaRepo repo;
 
     @Autowired
     private ClienteRepo clienteRepository;
-
-    // Método que adicionas uma nova conta
-    // Recebe como parâmetro uma conta (com ID do seu cliente) e retorna seus dados
-    // completos caso tenha sido adicionado com sucessos
-    // Senão, retorna nulo (null)
+    
     public Conta adicionarConta(Conta novaConta) {
         if(novaConta.getNumeroConta() > 0) {
             throw new NotFoundException("conta já cadastrado"); 
@@ -35,9 +29,6 @@ public class ContaService {
 
     }
 
-    // Método que recebe um número da conta e retorna os dados dessa conta se for
-    // encontrada
-    // Senão, retorna uma exceção
     public Conta recuperarPeloNumero(Integer numeroConta) {
         Optional<Conta> contaOptional = repo.findById(numeroConta);
         if (contaOptional.isPresent()) {
@@ -60,6 +51,4 @@ public class ContaService {
         conta.setSaldo(valor);
         repo.save(conta);
     }
-
-    
 }

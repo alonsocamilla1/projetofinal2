@@ -43,8 +43,6 @@ public class ContaServiceTest {
 
        assertThat(contaParaAlterar.getNumeroConta()).isEqualTo(1);
        assertThat(contaParaAlterar.getSaldo()).isEqualTo(30.0);
-     
-       // verify(repo, Mockito.times(0)).save(contaAlterada);
     }
 
     @Test
@@ -86,7 +84,7 @@ public class ContaServiceTest {
     @Test
     public void recuperarPeloNumero_throwException_whenNumeroNotExist() {
         Conta contaValida = GenerateConta.novaContaToSave();
-        // verifica se uma exception do tipo NotFoundException é lançada
+
         assertThrows(NotFoundException.class, () -> {
             service.recuperarPeloNumero(contaValida.getNumeroConta());
         });
@@ -103,7 +101,6 @@ public class ContaServiceTest {
 
     @Test
     public void recuperarContasPeloCliente_returnListaConta_whenIdExist() {
-        // Preparação
         List<Conta> listaContas = new ArrayList<>();
         listaContas.add(GenerateConta.contaValidaComCliente());
         listaContas.add(GenerateConta.contaValidaComCliente2());
@@ -114,18 +111,11 @@ public class ContaServiceTest {
 
         BDDMockito.when(repo.findByCliente(Optional.of(GenerateCliente.clienteValido())))
         .thenReturn(listaContas);
-
-        //Ação
+        
         List<Conta> listaRecuperada = service.recuperarContasPeloCliente(1);
-
-        // Verificação
+        
         assertThat(listaRecuperada).isNotNull();
         assertThat(listaRecuperada).isNotEmpty();
         assertThat(listaRecuperada.get(0).getCliente().getIdCliente()).isEqualTo(GenerateCliente.clienteValido().getIdCliente());
     }
-
-
-
- 
-    
 }

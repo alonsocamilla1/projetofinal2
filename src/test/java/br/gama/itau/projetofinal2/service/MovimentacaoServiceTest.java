@@ -57,17 +57,15 @@ public class MovimentacaoServiceTest {
 
     @Test
     public void recuperarTodas_returnTodasAsMovimentacoesCadastradas_whenSucesso() {
-       // preparação
       List<Movimentacao> lista = new ArrayList<>();
       lista.add(GenerateMovimentacao.novaMoviToSave());
       lista.add(GenerateMovimentacao.novaMoviToSave2());
+      
       BDDMockito.when(repo.findByConta(ArgumentMatchers.any(Conta.class)))
                 .thenReturn(lista);
-
-        //ação
+                
         List<Movimentacao> listaCompleta = service.recuperarTodas(1);
-
-        // verificações
+        
         assertThat(listaCompleta).isNotNull();
         assertThat(listaCompleta.size()).isEqualTo(2);
     }
@@ -83,7 +81,5 @@ public class MovimentacaoServiceTest {
         assertThrows(NotFoundException.class, () ->{
             service.recuperarTodas(0);
         });
-        
     }
-
 }

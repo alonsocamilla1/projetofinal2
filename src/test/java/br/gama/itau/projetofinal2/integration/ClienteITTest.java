@@ -24,9 +24,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import br.gama.itau.projetofinal2.model.Cliente;
 import br.gama.itau.projetofinal2.repositorio.ClienteRepo;
 import br.gama.itau.projetofinal2.util.GenerateCliente;
-
-
-// carrega o contexto do Spring para teste usando uma porta aleatória
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 public class ClienteITTest {
@@ -77,8 +74,7 @@ public class ClienteITTest {
 
         ResultActions resposta = mockMvc.perform(get("/clientes/{id}", clienteCriado.getIdCliente())
                 .contentType(MediaType.APPLICATION_JSON));
-
-        // verificar os resultados
+                
         resposta.andExpect(status().isOk())
                 .andExpect(jsonPath("$.idCliente", CoreMatchers.is(clienteCriado.getIdCliente())));
     }

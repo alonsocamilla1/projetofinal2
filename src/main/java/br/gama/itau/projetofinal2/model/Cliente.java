@@ -26,11 +26,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cliente {
-    // Modelo de dados do Cliente
-    // Cria uma tabela Cliente com Id, nome, cpf e telefone
-    // O Id é incrementado automaticamente a cada cliente criado
-
-    
+   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -47,6 +43,6 @@ public class Cliente {
 
       //Um cliente tem várias contas
       @OneToMany(mappedBy = "cliente")
-      @JsonIgnoreProperties("cliente") // quando for preencher a lista de contas, não coloque o cliente de cada conta
+      @JsonIgnoreProperties("cliente") 
       private List<Conta> contas;
 }

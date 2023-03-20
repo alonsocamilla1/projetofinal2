@@ -28,11 +28,6 @@ import lombok.Setter;
 @Builder
 public class Conta {
 
-    
-    // Modelo de dados da Conta
-    // Cria uma tabela Conta com número, agência, tipo, saldo e id do cliente
-    // O número da conta (numeroConta) é incrementado automaticamente a cada conta
-    // criada
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int numeroConta;
@@ -40,9 +35,6 @@ public class Conta {
     private int agencia;
     private int tipoConta;
     private double saldo;
-
-    // O idCliente é uma coluna de relacionamento N:1 da tabela Conta com Cliente,
-    // pegando a chave estrangeira
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
@@ -52,16 +44,6 @@ public class Conta {
     @JsonIgnoreProperties("contas")
     private List<Movimentacao> movimentacoes;
     
-    /*@OneToMany
-    @JoinColumn(name = "id_numSeq")
-    @JsonIgnoreProperties("conta") 
-    private Movimentacao movimentacao;*/
-    
-    
-
-    //@ManyToOne
-    //@JoinColumn(name = "id_cliente")
-    //private Cliente cliente;
 }
 
 

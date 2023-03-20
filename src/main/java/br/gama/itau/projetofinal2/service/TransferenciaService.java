@@ -11,6 +11,7 @@ public class TransferenciaService {
 
     @Autowired
     private ContaRepo contaRepository;
+    
     public boolean TransferirValores(int contaOrigem, int contaDestino, double valor) {
         Conta contaOrigemObj = contaRepository.findById(contaOrigem)
                 .orElseThrow(() -> new IllegalArgumentException("Conta de origem inválida"));
@@ -26,7 +27,5 @@ public class TransferenciaService {
         } else {
             return false;
         }
-
     }
-
 }
