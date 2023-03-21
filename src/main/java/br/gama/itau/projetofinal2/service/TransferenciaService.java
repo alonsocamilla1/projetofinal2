@@ -18,7 +18,7 @@ public class TransferenciaService {
         Conta contaDestinoObj = contaRepository.findById(contaDestino)
                 .orElseThrow(() -> new IllegalArgumentException("Conta de destino inválida"));
 
-        if (contaOrigemObj.getSaldo() >= valor) {
+        if (valor > 0) {
             contaOrigemObj.setSaldo(contaOrigemObj.getSaldo() - valor);
             contaDestinoObj.setSaldo(contaDestinoObj.getSaldo() + valor);
             contaRepository.save(contaOrigemObj);

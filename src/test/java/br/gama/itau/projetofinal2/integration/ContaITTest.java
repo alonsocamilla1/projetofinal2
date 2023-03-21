@@ -49,6 +49,7 @@ public class ContaITTest {
     @BeforeEach
     public void setup() {
         contaRepo.deleteAll();
+        clienteRepo.deleteAll();
     }
 
     @Test
@@ -79,12 +80,12 @@ public class ContaITTest {
 
     @Test
     public void recuperarContasPeloCliente_returnListaConta_whenIdExist() throws Exception {
-        Cliente novoCliente = GenerateCliente.clienteValido();
+        Cliente novoCliente = GenerateCliente.novoClienteToSave();
         Cliente clienteCriado = clienteRepo.save(novoCliente);
 
         List<Conta> listaContas = new ArrayList<>();
-        listaContas.add(GenerateConta.novaContaToSaveComCliente());
-        listaContas.add(GenerateConta.novaContaToSaveComCliente2());
+        listaContas.add(GenerateConta.novaContaToSaveComCliente(clienteCriado.getIdCliente()));
+        listaContas.add(GenerateConta.novaContaToSaveComCliente2(clienteCriado.getIdCliente()));
 
         contaRepo.saveAll(listaContas);
         
@@ -93,9 +94,9 @@ public class ContaITTest {
                 
         resposta.andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()", CoreMatchers.is(listaContas.size())))
-                .andExpect(jsonPath("$[0].cliente.idCliente", CoreMatchers.is(GenerateConta.novaContaToSaveComCliente().getCliente().getIdCliente())))
-                .andExpect(jsonPath("$[1].cliente.idCliente", CoreMatchers.is(GenerateConta.novaContaToSaveComCliente2().getCliente().getIdCliente())));
-    }
+                .andExpect(jsonPath("$[0].cliente.idCliente", CoreMatchers.is(clienteCriado.getIdCliente())))
+                .andExpect(jsonPath("$[1].cliente.idCliente", CoreMatchers.is(clienteCriado.getIdCliente())));
+     }
 
   
 }

@@ -38,10 +38,11 @@ public class Conta {
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
+    @JsonIgnoreProperties("contas")
     private Cliente cliente;
     
     @OneToMany(mappedBy = "conta")
-    @JsonIgnoreProperties("contas")
+    @JsonIgnoreProperties("conta")
     private List<Movimentacao> movimentacoes;
     
 }

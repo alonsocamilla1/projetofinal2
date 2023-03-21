@@ -91,4 +91,22 @@ public static Conta contaValida() {
             .cliente(GenerateCliente.clienteValido())
             .build();
     }
+
+    public static Conta novaContaToSaveComCliente(int idCliente) {
+        return Conta.builder()
+            .agencia(1111)
+            .tipoConta(1)
+            .saldo(10.0)
+            .cliente(Cliente.builder().idCliente(idCliente).build())
+            .build();
+    }
+
+    public static Conta novaContaToSaveComCliente2(int idCliente) {
+        return Conta.builder()
+            .agencia(2222)
+            .tipoConta(2)
+            .saldo(20.0)
+            .cliente(Cliente.builder().idCliente(idCliente).build())
+            .build();
+    }
 }
